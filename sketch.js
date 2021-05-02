@@ -6,7 +6,7 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var holder,polygon,ground;
 var stand1,stand2;
-var polygon;
+var me;
 var slingShot;
 var polygon_img;
 function preload(){
@@ -22,25 +22,25 @@ function setup() {
   stand2 = new Stand(700,200,200,10);
  
   //level one
-  block1 = new Block(300,275,30,40);
-  block2 = new Block(330,275,30,40);
-  block3 = new Block(360,275,30,40);
-  block4 = new Block(390,275,30,40);
-  block5 = new Block(420,275,30,40);
-  block6 = new Block(450,275,30,40);
-  block7 = new Block(480,275,30,40);
+  hi1 = new Block(300,275,30,40);
+  hi2 = new Block(330,275,30,40);
+  hi3 = new Block(360,275,30,40);
+ hi4 = new Block(390,275,30,40);
+  hi5 = new Block(420,275,30,40);
+  hi6 = new Block(450,275,30,40);
+hi7 = new Block(480,275,30,40);
   //level two
-  block8 = new Block(330,235,30,40);
-  block9 = new Block(360,235,30,40);
-  block10 = new Block(390,235,30,40);
-  block11 = new Block(420,235,30,40);
-  block12 = new Block(450,235,30,40);
+ hi8 = new Block(330,235,30,40);
+ hi9= new Block(360,235,30,40);
+  hi10 = new Block(390,235,30,40);
+  hi11 = new Block(420,235,30,40);
+ hi12 = new Block(450,235,30,40);
   //level three
-  block13 = new Block(360,195,30,40);
-  block14 = new Block(390,195,30,40);
-  block15 = new Block(420,195,30,40);
+ hi13 = new Block(360,195,30,40);
+  hi14 = new Block(390,195,30,40);
+  hi15 = new Block(420,195,30,40);
   //top
-  block16 = new Block(390,155,30,40);
+ hi16 = new Block(390,155,30,40);
 
   //set 2 for second stand
   //level one
@@ -57,7 +57,7 @@ function setup() {
   blocks9 = new Block(700,95,30,40);
 
   //polygon holder with slings
-  polygon = Bodies.circle(50,200,20);
+  me = Bodies.circle(50,200,20);
   World.add(world,polygon);
   
   slingShot = new Slingshot(this.polygon,{x:100,y:200});
@@ -70,34 +70,32 @@ function draw() {
   text(mouseX + ',' + mouseY, 10, 15);
   textSize(20);
   fill("lightyellow");
-  text("Drag the polygon to destroy the blocks",300,30);
   textSize(10);
-  text("Press Space to get a second Chance to Play!!",650 ,350);
   ground.display();
   stand1.display();
   stand2.display();
   strokeWeight(2);
   stroke(15);
   fill("skyblue");
-  block1.display();
-  block2.display();
-  block3.display();
-  block4.display();
-  block5.display();
-  block6.display();
-  block7.display();
+ hi1.display();
+  hi2.display();
+   hi3.display();
+  hi4.display();
+  hi5.display();
+   hi6.display();
+   hi7.display();
   fill("pink");
-  block8.display();
-  block9.display();
-  block10.display();
-  block11.display();
-  block12.display();
-  fill("turquoise");
-  block13.display();
-  block14.display();
-  block15.display();
+  hi8.display();
+ hi9.display();
+  hi10.display();
+  hi11.display();
+ hi12.display();
+  fill("cyan");
+  hi13.display();
+  hi14.display();
+  hi15.display();
   fill("grey");
-  block16.display();
+  hi16.display();
   fill("skyblue");
   blocks1.display();
   blocks2.display();
@@ -112,7 +110,7 @@ function draw() {
   blocks9.display();
   fill("gold");
   imageMode(CENTER)
-  image(polygon_img ,polygon.position.x,polygon.position.y,40,40);
+  image(polygon_img ,me.position.x,me.position.y,40,40);
 
   slingShot.display();
   
@@ -125,6 +123,6 @@ function mouseReleased(){
 }
 function keyPressed(){
   if(keyCode === 32){
-      slingShot.attach(this.polygon);
+      slingShot.attach(this.me);
   }
 }
